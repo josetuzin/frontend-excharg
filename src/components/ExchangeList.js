@@ -14,6 +14,10 @@ class ExchangeList extends Component {
 
     componentDidMount() {
         this.obtenerCotizaciones()
+        this.timerID = setInterval(
+            () => this.obtenerCotizaciones(),
+            5000
+          );
     }
 
 
@@ -23,43 +27,38 @@ class ExchangeList extends Component {
 
     obtenerCotizaciones() {
         this.setState({loading:true})
-        
-        setTimeout(() => {
-            this.setState({loading: false})
-        }, 2000)
-
-        // fetch('http://localhost:4000/cotizaciones/dolar')
-        //     .then(response => response.json())
-        //     .then(json => this.setState({
-        //         precioDolar: json.precio
-        //     }))
-
-        // fetch('http://localhost:4000/cotizaciones/euro')
-        //     .then(response => response.json())
-        //     .then(json => this.setState({
-        //         precioEuro: json.precio
-        //     }))
-
+    
+        const _this = this
+        Promise.all([
+            fetch('http://localhost:4000/cotizaciones/dolar'),
+            fetch('http://localhost:4000/cotizaciones/euro'),
+            fetch('http://localhost:4000/cotizaciones/real'),
+        ]).then(function (responses) {
+            return Promise.all(responses.map(function (response) {
+                return response.json();
+            }));
+        }).then(function (data) {
+            _this.setState({
+                precioDolar: data[0].precio,
+                precioEuro: data[1].precio,
+                precioReal: data[2].precio,
+                loading: false
+            })
             
-        // fetch('http://localhost:4000/cotizaciones/real')
-        //     .then(response => response.json())
-        //     .then(json => {
-        //         this.setState({
-        //             precioReal: json.precio
-        //         })
-        //     })
+        }).catch(function (error) {
+            console.log(error);
+            _this.setState({loading:false})
+        });
         
     }
 
     render() {
         const { loading } = this.state
-        
-        if(loading){
-            return <FullPageLoader />
-        }
 
         return (
             <div className="row mt-5">
+                
+                { loading && <FullPageLoader /> }
                 <Exchange 
                     moneda="Dólar"
                     precio={this.state.precioDolar}

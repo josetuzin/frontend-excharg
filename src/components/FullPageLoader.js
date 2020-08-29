@@ -8,7 +8,7 @@ class FullPageLoader extends Component {
         return (
             <div className="loader-container">
                 <div className="loader">
-                    <img src={Loader} alt=""/>
+                    <img src={Loader} alt="Loader"/>
                 </div>
             </div>
         )

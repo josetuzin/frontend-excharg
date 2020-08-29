@@ -4,8 +4,8 @@ class Exchange extends Component {
     render() {
         return (
             <div className="col-md-4 col-sm-12 p-2">
-                <div className="card">
-                    <div className="card-header d-flex justify-content-between">
+                <div className="card text-center">
+                    <div className="card-header d-flex justify-content-center">
                         <h5 className="moneda">{this.props.moneda}</h5>
                     </div>
                     <div className="card-body">
