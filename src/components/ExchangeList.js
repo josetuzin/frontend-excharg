@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Exchange from './Exchange'
+import FullPageLoader from './FullPageLoader'
+
 
 class ExchangeList extends Component {
 
@@ -7,6 +9,7 @@ class ExchangeList extends Component {
         precioDolar: '',
         precioEuro: '',
         precioReal: '',
+        loading: false
     }
 
     componentDidMount() {
@@ -19,32 +22,44 @@ class ExchangeList extends Component {
     }
 
     obtenerCotizaciones() {
-        fetch('http://localhost:4000/cotizaciones/dolar')
-            .then(response => response.json())
-            .then(json => this.setState({
-                precioDolar: json.precio
-            }))
+        this.setState({loading:true})
+        
+        setTimeout(() => {
+            this.setState({loading: false})
+        }, 2000)
 
-        fetch('http://localhost:4000/cotizaciones/euro')
-            .then(response => response.json())
-            .then(json => this.setState({
-                precioEuro: json.precio
-            }))
+        // fetch('http://localhost:4000/cotizaciones/dolar')
+        //     .then(response => response.json())
+        //     .then(json => this.setState({
+        //         precioDolar: json.precio
+        //     }))
+
+        // fetch('http://localhost:4000/cotizaciones/euro')
+        //     .then(response => response.json())
+        //     .then(json => this.setState({
+        //         precioEuro: json.precio
+        //     }))
 
             
-        fetch('http://localhost:4000/cotizaciones/real')
-            .then(response => response.json())
-            .then(json => {
-                this.setState({
-                    precioReal: json.precio
-                })
-            })
+        // fetch('http://localhost:4000/cotizaciones/real')
+        //     .then(response => response.json())
+        //     .then(json => {
+        //         this.setState({
+        //             precioReal: json.precio
+        //         })
+        //     })
+        
     }
 
     render() {
+        const { loading } = this.state
+        
+        if(loading){
+            return <FullPageLoader />
+        }
+
         return (
             <div className="row mt-5">
-                <h1>{this.state.t}</h1>
                 <Exchange 
                     moneda="Dólar"
                     precio={this.state.precioDolar}
