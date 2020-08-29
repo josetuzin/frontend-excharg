@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 
+// import usaFlag from '../assests/img/br-flag'
+// import brFlag from '../assests/img/br-flag'
+// import brFlag from '../assests/img/br-flag'
+
 class Exchange extends Component {
     render() {
         return (
@@ -12,7 +16,7 @@ class Exchange extends Component {
                         <p className="cotizacion">$ {this.props.precio}</p>
                     </div>
                     <div className="card-footer">
-                        <p className="fecha">Otro dato</p>
+                        <p className="p-2 emoji">{this.props.emoji}</p>
                     </div>
                 </div>
             </div>

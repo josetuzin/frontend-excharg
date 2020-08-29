@@ -62,15 +62,18 @@ class ExchangeList extends Component {
                 <Exchange 
                     moneda="Dólar"
                     precio={this.state.precioDolar}
-                />
+                    emoji='🇺🇸'
+                    />
                 <Exchange 
                     moneda="Euro"
                     precio={this.state.precioEuro}
-                />
+                    emoji='🇪🇺'
+                    />
                 <Exchange 
                     moneda="Real"
                     precio={this.state.precioReal}
-                />
+                    emoji='🇧🇷'
+                    />
             </div>
         )
     }
