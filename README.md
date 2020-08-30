@@ -16,7 +16,7 @@ $ npm start
 
 ## Live demo
 
-Para acceder a la aplicaciion, ingresar al siguiente [enlace](https://excharg.herokuapp.com/)
+Para acceder a la aplicación, ingresar al siguiente [enlace](https://excharg.herokuapp.com/)
 
 
 
