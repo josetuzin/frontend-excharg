@@ -1,6 +1,6 @@
 {
   "name": "frontend-excharg",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Implementación de un frontend para consumo de api de cotizaciones",
   "engines": {
     "npm":"6.14.4",
