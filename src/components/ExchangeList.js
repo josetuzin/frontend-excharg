@@ -30,9 +30,9 @@ class ExchangeList extends Component {
     
         const _this = this
         Promise.all([
-            fetch('https://api-excharg.herokuapp.com/cotizaciones/dolar'),
-            fetch('https://api-excharg.herokuapp.com/cotizaciones/euro'),
-            fetch('https://api-excharg.herokuapp.com/cotizaciones/real'),
+            fetch('http://localhost:4000/cotizaciones/dolar'),
+            fetch('http://localhost:4000/cotizaciones/euro'),
+            fetch('http://localhost:4000/cotizaciones/real'),
         ]).then(function (responses) {
             return Promise.all(responses.map(function (response) {
                 return response.json();
