@@ -15,9 +15,7 @@ class Exchange extends Component {
                     <div className="card-body">
                         <p className="cotizacion">$ {this.props.precio}</p>
                     </div>
-                    <div className="card-footer">
-                        <p className="p-2 emoji">{this.props.emoji}</p>
-                    </div>
+                    <div className="card-footer"></div>
                 </div>
             </div>
         )
